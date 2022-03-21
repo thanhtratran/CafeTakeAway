@@ -188,7 +188,7 @@
 													<div class="item text-center col-20">
 														<div class="product-miniature js-product-miniature item-one first-item">
 															<div class="thumbnail-container">
-																<a href="<c:url value="/assets/user/products/productDetail/${ item.maSP }" />"> <img
+																<a href="<c:url value="/products/productDetail/${ item.maSP }" />"> <img
 																	class="img-fluid image-cover"
 																	src="<c:url value="/assets/user/upload/${ item.anh }" />" alt="img">
 																	<img class="img-fluid image-secondary"
@@ -199,7 +199,7 @@
 															<div class="product-description">
 																<div class="product-groups">
 																	<div class="product-title">
-																		<a href="<c:url value="/assets/user/products/productDetail/${ item.maSP }" /> ">${ item.tenSP }</a>
+																		<a href="<c:url value="/products/productDetail/${ item.maSP }" /> ">${ item.tenSP }</a>
 																	</div>
 																	<div class="rating">
 																		&nbsp
@@ -229,10 +229,9 @@
 																	
 																</div>
 																<div class="product-buttons d-flex justify-content-center">
-																	<form action="<c:url value="/assets/user/shoppingCart/addToCart" />" method="post"
+																	<form action="<c:url value="/addCart/${ item.maSP }" />" method="post"
 																		class="formAddToCart" id="my_form">
-																		<input type="hidden" name="quantity" value="1">
-																		<input type="hidden" name="productId" value="12">
+																		
 																		<!-- <a class="add-to-cart" href="#" onclick="document.getElementById('my_form').submit();" 
 		                                                                        data-button-action="add-to-cart">
 		                                                                        <i class="fa fa-shopping-cart"
@@ -247,7 +246,7 @@
 																	<!-- <a class="addToWishlist" href="#" data-rel="1" onclick="">
 		                                                                    <i class="fa fa-heart" aria-hidden="true"></i>
 		                                                                </a> -->
-																	<a href="<c:url value="/assets/user/products/productDetail/1" />2"
+																	<a href="<c:url value="/products/productDetail/1" />2"
 																		class="quick-view hidden-sm-down"
 																		data-link-action="quickview"> <i class="fa fa-eye"
 																		aria-hidden="true"></i>
