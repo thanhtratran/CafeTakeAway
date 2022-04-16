@@ -14,19 +14,19 @@ public class CartDao {
 	@Autowired
 	SanPhamDao spdao = new SanPhamDao();
 	
-	public HashMap<Integer, CartDto> AddCard(int id, HashMap<Integer, CartDto> cart) {
+	public HashMap<Integer, CartDto> AddCard(int id, int quanty, HashMap<Integer, CartDto> cart) {
 		CartDto itemCart = new CartDto();
 		SanPham sp =  spdao.FindSanPhamById(id);
 		
 		if( sp != null) {
 			if (cart.containsKey(id)) {
 				itemCart = cart.get(id);
-				itemCart.setQuanty(itemCart.getQuanty() + 1);
+				itemCart.setQuanty(itemCart.getQuanty() + quanty);
 				itemCart.setTotalPrice(itemCart.getQuanty() * itemCart.getProduct().getDonGiaSauKM());
 			} else {
 				itemCart.setProduct(sp);
-				itemCart.setQuanty(1);
-				itemCart.setTotalPrice(sp.getDonGiaSauKM());
+				itemCart.setQuanty(quanty);
+				itemCart.setTotalPrice(sp.getDonGiaSauKM() * quanty);
 			}
 		} 
 		

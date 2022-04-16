@@ -27,5 +27,7 @@ public class HomeServiceImpl implements IHomeService {
 	public List<LoaiSanPham> GetDataLoaiSanPham() {
 		return loaisanphamdao.GetDataLoaiSanPham();
 	}
+	
+	
 
 }

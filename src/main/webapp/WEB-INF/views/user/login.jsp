@@ -43,7 +43,7 @@
                                 <div class="login-form">
                                     
                                     
-                                    <form:form id="customer-form" action="login" method="post" modelAttribute="user">
+                                    <form:form id="customer-form" action="/CafeTakeAway/login" method="post" modelAttribute="user">
                                         <div>
                                             <div class="form-group no-gutters">
                                                 <form:input class="form-control" path="username" type="text"

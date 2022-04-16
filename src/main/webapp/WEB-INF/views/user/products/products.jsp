@@ -16,7 +16,8 @@
 									<div class="container no-index">
 										<div class="breadcrumb">
 											<ol>
-												<li><a href="/assets/user/home"> <span>Trang chủ</span>
+												<li><a href="/assets/user/home"> <span>Trang
+															chủ</span>
 												</a></li>
 												<li><a href="#"> <span>Sản phẩm</span>
 												</a></li>
@@ -35,7 +36,7 @@
 												<!-- category menu -->
 												<div class="sidebar-block">
 													<div class="title-block">Danh mục</div>
-													
+
 													<div class="block-content">
 														<c:forEach var="loaisp" items="${ loaisp }">
 															<div class="cateTitle hasSubCategory open level1">
@@ -48,8 +49,7 @@
 
 													</div>
 												</div>
-
-
+												
 												<div class="sidebar-block">
 													<div class="title-block">Bán nhiều nhất</div>
 													<div class="product-content tab-content">
@@ -58,11 +58,13 @@
 																<div
 																	class="product-miniature item-one first-item d-flex">
 																	<div class="thumbnail-container border">
-																		<a href="/assets/user/products/productDetail/13"> <img
-																			class="img-fluid image-cover"
-																			src="/assets/user/upload/hong-tra-latte.jpg" alt="img">
-																			<img class="img-fluid image-secondary"
-																			src="/assets/user/upload/hong-tra-latte.jpg" alt="img">
+																		<a href="/assets/user/products/productDetail/13">
+																			<img class="img-fluid image-cover"
+																			src="/assets/user/upload/hong-tra-latte.jpg"
+																			alt="img"> <img
+																			class="img-fluid image-secondary"
+																			src="/assets/user/upload/hong-tra-latte.jpg"
+																			alt="img">
 																		</a>
 																	</div>
 																	<div class="product-description">
@@ -92,8 +94,8 @@
 																	<div class="thumbnail-container border">
 																		<a href="/assets/user/products/productDetail/2"> <img
 																			class="img-fluid image-cover"
-																			src="/assets/user/upload/bac-xiu-da.jpg" alt="img"> <img
-																			class="img-fluid image-secondary"
+																			src="/assets/user/upload/bac-xiu-da.jpg" alt="img">
+																			<img class="img-fluid image-secondary"
 																			src="/assets/user/upload/bac-xiu-da.jpg" alt="img">
 																		</a>
 																	</div>
@@ -250,18 +252,21 @@
 												<div class="tab-content product-items">
 													<div id="grid" class="related tab-pane fade in active show">
 														<div class="row">
-															
+
 															<c:if test="${ SanPhamByPage.size() > 0 }">
 																<c:forEach var="item" items="${ SanPhamByPage }">
 																	<div class="item text-center col-md-4">
 																		<div
 																			class="product-miniature js-product-miniature item-one first-item">
 																			<div class="thumbnail-container border">
-																				<a href="<c:url value="/products/productDetail/${ item.maSP }"/>"> <img
-																					class="img-fluid image-cover"
-																					src="<c:url value="/assets/user/upload/${ item.anh }"/>" alt="img">
-																					<img class="img-fluid image-secondary"
-																					src="<c:url value="/assets/user/upload/${ item.anh }"/>" alt="img">
+																				<a
+																					href="<c:url value="/products/productDetail/${ item.maSP }"/>">
+																					<img class="img-fluid image-cover"
+																					src="<c:url value="/assets/user/upload/${ item.anh }"/>"
+																					alt="img"> <img
+																					class="img-fluid image-secondary"
+																					src="<c:url value="/assets/user/upload/${ item.anh }"/>"
+																					alt="img">
 																				</a>
 																				<div class="highlighted-informations">
 																					<!-- <div class="variant-links">
@@ -272,29 +277,28 @@
 																				</div>
 																			</div>
 																			<div class="product-description">
-																			<div class="product-groups">
-																				<div class="product-title">
-																					<a href="/assets/user/products/productDetail/${ item.maSP }"
-																						style="color: black !important; font-size: 15px; font-weight: 500;">${ item.tenSP }</a>
-																				</div>
-																				<div class="rating">&nbsp
-																					 <span class="price">
-																						<c:if test="${ item.donGia != donGiaSauKM }">
-																							<del>${ item.donGiaSauKM }</del> đ
+																				<div class="product-groups">
+																					<div class="product-title">
+																						<a
+																							href="/assets/user/products/productDetail/${ item.maSP }"
+																							style="color: black !important; font-size: 15px; font-weight: 500;">${ item.tenSP }</a>
+																					</div>
+																					<div class="rating">
+																						&nbsp <span class="price"> <c:if
+																								test="${ item.donGia != donGiaSauKM }">
+																								<del>${ item.donGiaSauKM }</del> đ
 																						</c:if>
-																					 </span>
-																				</div>
-																				<div class="product-group-price">
-																					<div class="product-price-and-shipping">
-																						<span class="price">
-																							${ item.donGia }
-																						</span> đ
+																						</span>
+																					</div>
+																					<div class="product-group-price">
+																						<div class="product-price-and-shipping">
+																							<span class="price"> ${ item.donGia } </span> đ
+																						</div>
 																					</div>
 																				</div>
-																			</div>
-																			<div
-																				class="product-buttons d-flex justify-content-center">
-																				<!-- <form action="#" method="post"
+																				<div
+																					class="product-buttons d-flex justify-content-center">
+																					<!-- <form action="#" method="post"
 	                                                                                class="formAddToCart">
 	                                                                                <input type="hidden" name="id_product"
 	                                                                                    value="1">
@@ -304,31 +308,34 @@
 	                                                                                        aria-hidden="true"></i>
 	                                                                                </a>
 	                                                                            </form> -->
-																				<form action="<c:url value="/addCart/${ item.maSP }"/>"
-																					method="get" class="formAddToCart" id="my_form">
-																					
-																					<!-- <a class="add-to-cart" href="#" onclick="document.getElementById('my_form').submit();" 
+																					<form
+																						action="<c:url value="/addCart/${ item.maSP }"/>"
+																						method="get" class="formAddToCart" id="my_form">
+																						<input hidden type="number" value="1"
+																							name="quanty"
+																							class="quantity-field input-group form-control">
+																						<!-- <a class="add-to-cart" href="#" onclick="document.getElementById('my_form').submit();" 
 	                                                                                    data-button-action="add-to-cart">
 	                                                                                    <i class="fa fa-shopping-cart"
 	                                                                                        aria-hidden="true"></i>
 	                                                                                </a> -->
-	
-	
-																					<button type="submit" class="add-to-cart">
-																						<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-																					</button>
-																				</form>
-																				<a href="/products/productDetail/${ item.maSP }"
-																					class="quick-view hidden-sm-down"
-																					data-link-action="quickview"> <i
-																					class="fa fa-eye" aria-hidden="true"></i>
-																				</a>
+
+
+																						<button type="submit" class="add-to-cart">
+																							<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+																						</button>
+																					</form>
+																					<a href="/products/productDetail/${ item.maSP }"
+																						class="quick-view hidden-sm-down"
+																						data-link-action="quickview"> <i
+																						class="fa fa-eye" aria-hidden="true"></i>
+																					</a>
+																				</div>
 																			</div>
-																		</div>
 																		</div>
 																	</div>
 																</c:forEach>
-																
+
 															</c:if>
 														</div>
 													</div>
@@ -340,24 +347,26 @@
 													<div class="js-product-list-top ">
 														<div class="d-flex justify-content-around row">
 															<div class="showing col col-xs-12">
-																<span>Đang hiển thị 1 trong ${ page.totalPage } trang</span>
-																
+																<span>Đang hiển thị 1 trong ${ page.totalPage }
+																	trang</span>
+
 															</div>
 															<div class="page-list col col-xs-12">
 																<ul>
 
-																	<c:forEach var="item" begin="1" end="${ page.totalPage }"  varStatus="loop">
-																		
-																		
+																	<c:forEach var="item" begin="1"
+																		end="${ page.totalPage }" varStatus="loop">
+
+
 																		<c:if test="${ loop.index == page.currentPage }">
 																			<li><span class="disabled js-search-link">${ loop.index }</span></li>
 																		</c:if>
-																		
+
 																		<c:if test="${ loop.index != page.currentPage }">
 																			<li><a class="disabled js-search-link"
-																				href="<c:url value="/products?page=${ loop.index }"/>" >${ loop.index }</a></li>
+																				href="<c:url value="/products?page=${ loop.index }"/>">${ loop.index }</a></li>
 																		</c:if>
-																	</c:forEach> 
+																	</c:forEach>
 
 																</ul>
 															</div>

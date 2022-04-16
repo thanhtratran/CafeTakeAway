@@ -14,8 +14,8 @@ public class CartServiceImpl implements ICartService {
 	@Autowired
 	CartDao cartdao;
 	
-	public HashMap<Integer, CartDto> AddCard(int id, HashMap<Integer, CartDto> cart) {
-		return cartdao.AddCard(id, cart);
+	public HashMap<Integer, CartDto> AddCard(int id, int quanty, HashMap<Integer, CartDto> cart) {
+		return cartdao.AddCard(id, quanty, cart);
 	}
 
 	public HashMap<Integer, CartDto> EditCart(int id, int quanty, HashMap<Integer, CartDto> cart) {

@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,27 +24,29 @@ public class CartController {
 	CartServiceImpl cartservice;
 	
 	@RequestMapping("/addCart/{id}")
-	public String AddCart(HttpServletRequest request, HttpSession session, @PathVariable int id) {
+	public String AddCart(HttpServletRequest request, HttpSession session, @PathVariable int id, @RequestParam int quanty) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("loaisp", homeservice.GetDataLoaiSanPham());
+		@SuppressWarnings("unchecked")
 		HashMap<Integer, CartDto> cart = (HashMap<Integer, CartDto>)session.getAttribute("Cart");
 
 		if (cart == null) {
 			cart = new HashMap<Integer, CartDto>();
 		}
 		
-		cart = cartservice.AddCard(id, cart);
+		cart = cartservice.AddCard(id, quanty, cart);
 		session.setAttribute("Cart", cart);
 		session.setAttribute("totalQuanty", cartservice.TotalQuanty(cart));
 		session.setAttribute("totalPrice", cartservice.TotalPrice(cart));
 		return "redirect:" + request.getHeader("Referer");
 
-	}
+	} 
 	
 	@RequestMapping("/editCart/{id}")
 	public String EditCart(HttpServletRequest request, HttpSession session, @PathVariable int id, @RequestParam() Integer newQuanty ) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("loaisp", homeservice.GetDataLoaiSanPham());
+		@SuppressWarnings("unchecked")
 		HashMap<Integer, CartDto> cart = (HashMap<Integer, CartDto>)session.getAttribute("Cart");
 
 		if (cart == null) {

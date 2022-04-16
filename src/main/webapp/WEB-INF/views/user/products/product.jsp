@@ -117,7 +117,7 @@
 																		<div class="qty">
 																			<div class="input-group">
 																				<form action="<c:url value="/addCart/${ sanpham.maSP }"/>"
-																					method="get" class="formAddToCart" id="my_form">
+																					method="get" class="formAddToCart edit-card" id="my_form">
 
 
 																					<div class="quantity">
@@ -130,16 +130,16 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 </style>
 
 																						<input type="number" step="1" max="10" value="1"
-																							min="1" name="quantity"
+																							min="1" name="quanty"
 																							class="quantity-field input-group form-control">
-																						<input type="hidden" name="productId" value="13">
+																						<!-- <input type="hidden" name="productId" value="13"> -->
 																						<span class="input-group-btn-vertical"> <input
 																							type="button" value="+"
 																							class="button-plus btn btn-touchspin js-touchspin bootstrap-touchspin-up"
-																							data-field="quantity"> <input
+																							data-field="quanty"> <input
 																							type="button" value="-"
 																							class="button-minus btn btn-touchspin js-touchspin bootstrap-touchspin-down"
-																							data-field="quantity">
+																							data-field="quanty">
 
 																						</span>
 																					</div>
@@ -295,10 +295,10 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 																					<div
 																						class="product-buttons d-flex justify-content-center">
 		
-																						<form action="<c:url value="/assets/user/shoppingCart/addToCart" />"
+																						<form action="<c:url value="/addToCart/${ item.maSP }" />"
 																							method="post" class="formAddToCart" id="my_form">
-																							<input type="hidden" name="quantity" value="1">
-																							<input type="hidden" name="productId" value="2">
+																							<!-- <input type="hidden" name="quantity" value="1">
+																							<input type="hidden" name="productId" value="2"> -->
 																							<!-- <a class="add-to-cart" href="#" onclick="document.getElementById('my_form').submit();" 
 		                                                                                        data-button-action="add-to-cart">
 		                                                                                        <i class="fa fa-shopping-cart"

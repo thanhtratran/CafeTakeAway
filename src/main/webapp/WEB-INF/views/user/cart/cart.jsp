@@ -82,7 +82,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 
 
 																						<input type="number" step="1" max="10" min="1"
-																							id="quanty-cart-${ item.key }" data-id="${ item.key }"
+																							id="quanty-cart-${ item.key }"
+																							data-id="${ item.key }"
 																							class="quantity-field input-group form-control edit-card"
 																							value="${ item.value.quanty }"> <span
 																							class="input-group-btn-vertical"> <!-- <input type="button" value="+" 
@@ -201,15 +202,13 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 			</div>
 		</div>
 	</div>
-	
-<content tag="script">
-	<script>
+
+	<content tag="script"> <script>
 		$(".edit-card").on("change", function() {
-	    	var id = $(this).data("id");
-	    	var quanty = $("#quanty-cart-" + id).val();
-	    	window.location = "edit" + "Cart/" + id + "?newQuanty=" + quanty; 
-	    })
-	</script>     
-</content>
+			var id = $(this).data("id");
+			var quanty = $("#quanty-cart-" + id).val();
+			window.location = "edit" + "Cart/" + id + "?newQuanty=" + quanty;
+		})
+	</script> </content>
 
 </section>

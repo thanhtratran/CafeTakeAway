@@ -28,4 +28,33 @@ public class LoaiSanPhamDao {
 		list = _jdbcTemplate.query(sql, new MapperLoaiSanPham());
 		return list;
 	}
+	
+	public LoaiSanPham GetLoaiSanPhamByID(int id) {
+		String sql = "select * from loaisanpham where MaLoai = " + id;
+		LoaiSanPham loaisp = _jdbcTemplate.queryForObject(sql, new MapperLoaiSanPham());
+		return loaisp;
+	}
+	
+	public int GetMaxMaLoai() {
+		String sql = "select max(maLoai) from loaisanpham";
+		return _jdbcTemplate.queryForObject(sql, int.class);
+	}
+	
+	public void ThemLoaiSanPham(LoaiSanPham loaisp) {
+		String sql = "INSERT INTO `loaisanpham`(`MaLoai`, `TenLoai`) VALUES ('" + loaisp.getMaLoai() + "','" + loaisp.getTenLoai() + "')";
+		_jdbcTemplate.update(sql);
+		return;
+	}
+	
+	public void UpdateLoaiSanPham(LoaiSanPham loaisp) {
+		String sql = "UPDATE `loaisanpham` SET `TenLoai`='" + loaisp.getTenLoai() + "' WHERE maLoai = " + loaisp.getMaLoai();
+		_jdbcTemplate.update(sql);
+		return;
+	}
+	
+	public void DeleteLoaiSanPham(int maLoai) {
+		String sql = "DELETE FROM `loaisanpham` WHERE maLoai = " + maLoai;
+		_jdbcTemplate.update(sql);
+		return;
+	}
 }

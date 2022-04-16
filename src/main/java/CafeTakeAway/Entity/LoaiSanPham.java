@@ -16,6 +16,10 @@ public class LoaiSanPham {
 	public void setTenLoai(String tenLoai) {
 		TenLoai = tenLoai;
 	}
+	
+	public LoaiSanPham() {
+		super();
+	}
 	public LoaiSanPham(int maLoai, String tenLoai) {
 		super();
 		MaLoai = maLoai;

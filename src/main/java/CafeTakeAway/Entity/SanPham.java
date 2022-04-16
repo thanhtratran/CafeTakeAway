@@ -89,6 +89,11 @@ public class SanPham {
 		MoiNhat = moiNhat;
 		MaLoai = maLoai;
 	}
+	public SanPham() {
+		super();
+	}
+	
+	
 	
 	
 	

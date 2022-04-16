@@ -11,7 +11,7 @@ import CafeTakeAway.Entity.User;
 @Controller
 public class AdminController {
 	
-	@RequestMapping("/admin")
+	@RequestMapping(value = {"/admin", "/admin/", "/admin/home", "/admin/home/"})
 	public ModelAndView AdminHome(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/admin/index");

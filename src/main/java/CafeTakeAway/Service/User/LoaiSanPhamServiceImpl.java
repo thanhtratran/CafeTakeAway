@@ -16,6 +16,8 @@ public class LoaiSanPhamServiceImpl implements ILoaiSanPhamService {
 	SanPhamDao spdao;
 	@Autowired
 	LoaiSanPhamDao loaispdao;
+	@Autowired
+	LoaiSanPhamDao loaisanphamdao;
 	
 	public List<SanPham> GetAllDataSanPham() {
 		return spdao.GetAllDataSanPham();
@@ -38,5 +40,25 @@ public class LoaiSanPhamServiceImpl implements ILoaiSanPhamService {
 		return list.get(0);
 	}
 	
+	public LoaiSanPham GetLoaiSanPhamByID(int id) {
+		return loaisanphamdao.GetLoaiSanPhamByID(id);
+	}
 	
+	public int GetMaxMaLoai() {
+		return loaisanphamdao.GetMaxMaLoai();
+	}
+	
+	public void ThemLoaiSanPham(LoaiSanPham loaisp) {
+		loaisanphamdao.ThemLoaiSanPham(loaisp);
+		return;
+	}
+	
+	public void UpdateLoaiSanPham(LoaiSanPham loaisp) {
+		loaisanphamdao.UpdateLoaiSanPham(loaisp);
+		return;
+	}
+	
+	public void DeleteLoaiSanPham(int maLoai) {
+		loaisanphamdao.DeleteLoaiSanPham(maLoai);
+	}
 }

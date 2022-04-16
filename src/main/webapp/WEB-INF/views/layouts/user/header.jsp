@@ -167,13 +167,7 @@
 						<div class="blockcart block-cart cart-preview tiva-toggle">
 							<div class="header-cart tiva-toggle-btn">
 								<span class="cart-products-count">
-									<c:if test="${ totalQuanty > 0 }">
-										${ totalQuanty}
-									</c:if>
-									
-									<c:if test="${ totalQuanty == 0 }">
-										0
-									</c:if>
+									${ totalQuanty + 0 }
 								</span> <i
 									class="fa fa-shopping-cart" aria-hidden="true"></i>
 							</div>

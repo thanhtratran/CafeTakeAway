@@ -28,7 +28,7 @@ public class SanPhamController {
 		mv.addObject("loaisp", homeservice.GetDataLoaiSanPham());
 		
 		int totalData = loaiSPService.GetAllDataSanPham().size();
-		PageDto pageDto = pageService.GetAllPages(totalData, 9, Integer.parseInt(page));
+		PageDto pageDto = pageService.GetAllPages(totalData, totalData, Integer.parseInt(page));
 	
 		mv.addObject("page", pageDto);
 		mv.addObject("totalData", totalData);
