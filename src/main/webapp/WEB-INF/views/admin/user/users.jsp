@@ -60,7 +60,7 @@
 							<tr>
 								<th style="color: blue;"><a
 									href="/admin/users/page/1?sortField=userId&amp;sortDir=asc">
-										ID <span> <i class="icon-copy fa fa-arrow-up"
+										MaNV <span> <i class="icon-copy fa fa-arrow-up"
 											aria-hidden="true"></i>
 									</span> <!-- <i class="icon-copy fa" th:classappend = "${sortField} == 'productId' && ${sortField} == 'desc'? fa-arrow-down : fa-arrow-up" aria-hidden="true"></i> -->
 								</a></th>
@@ -90,114 +90,32 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>11</td>
-								<td>Trần Văn Thạch</td>
-								<td>thach@gmail.com</td>
-								<td>0123456789</td>
-								<td>PRODUCT_MANAGER</td>
-								<td style="max-width: 150px;">125 Trần Phú , Cần Thơ</td>
-								<td><span>Hoạt động</span></td>
-								<td>
-									<div class="dropdown">
-										<a
-											class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-											href="#" role="button" data-toggle="dropdown"> <i
-											class="dw dw-more"></i>
-										</a>
-										<div
-											class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-
-											<a class="dropdown-item" href="/admin/users/update/11"><i
-												class="dw dw-edit2"></i> Chỉnh sửa</a> <a
-												onclick="return confirm('Bạn muốn xóa người dùng ?');"
-												class="dropdown-item" href="/admin/users/delete/11"><i
-												class="dw dw-delete-3"></i>Xóa</a>
+							<c:forEach var="item" items="${ users }">
+								<tr>
+									<td>${ item.maNhanVien}</td>
+									<td>${ item.ho } ${ item.ten }</td>
+									<td>${ item.email}</td>
+									<td>${ item.sdt}</td>
+									<td>${ item.chucVu}</td>
+									<td style="max-width: 150px;">${ item.diaChi}</td>
+									<td><span>${ item.maNhanVien}</span></td>
+									<td>
+										<div class="dropdown">
+											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+												href="#" role="button" data-toggle="dropdown"> <i
+												class="dw dw-more"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+												<a class="dropdown-item" href="<c:url value="/admin/user/update/${ item.maNhanVien}"/>"><i
+													class="dw dw-edit2"></i> Chỉnh sửa</a> 
+													<a class="dropdown-item" href="<c:url value="/admin/user/delete/${ item.maNhanVien}"/>"><i
+													class="dw dw-delete-3"></i>Xóa</a>
+											</div>
 										</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>10</td>
-								<td>Nguyễn Văn Anh</td>
-								<td>anh@gmail.com</td>
-								<td>0123456789</td>
-								<td>CUSTOMER</td>
-								<td style="max-width: 150px;">TPHCM</td>
-								<td><span>Hoạt động</span></td>
-								<td>
-									<div class="dropdown">
-										<a
-											class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-											href="#" role="button" data-toggle="dropdown"> <i
-											class="dw dw-more"></i>
-										</a>
-										<div
-											class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+									</td>
+								</tr>
+							</c:forEach>
 
-											<a class="dropdown-item" href="/admin/users/update/10"><i
-												class="dw dw-edit2"></i> Chỉnh sửa</a> <a
-												onclick="return confirm('Bạn muốn xóa người dùng ?');"
-												class="dropdown-item" href="/admin/users/delete/10"><i
-												class="dw dw-delete-3"></i>Xóa</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>9</td>
-								<td>Phạm Quyền</td>
-								<td>admin@gmail.com</td>
-								<td>0123456789</td>
-								<td>ADMIN</td>
-								<td style="max-width: 150px;">123/45 Lê Lợi - TpHCM</td>
-								<td><span>Hoạt động</span></td>
-								<td>
-									<div class="dropdown">
-										<a
-											class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-											href="#" role="button" data-toggle="dropdown"> <i
-											class="dw dw-more"></i>
-										</a>
-										<div
-											class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-
-											<a class="dropdown-item" href="/admin/users/update/9"><i
-												class="dw dw-edit2"></i> Chỉnh sửa</a> <a
-												onclick="return confirm('Bạn muốn xóa người dùng ?');"
-												class="dropdown-item" href="/admin/users/delete/9"><i
-												class="dw dw-delete-3"></i>Xóa</a>
-										</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>8</td>
-								<td>Lê Văn Tính</td>
-								<td>tinh@gmail.com</td>
-								<td>0123456789</td>
-								<td>SALE_MANAGER</td>
-								<td style="max-width: 150px;">30/4, Can Tho</td>
-								<td><span>Hoạt động</span></td>
-								<td>
-									<div class="dropdown">
-										<a
-											class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-											href="#" role="button" data-toggle="dropdown"> <i
-											class="dw dw-more"></i>
-										</a>
-										<div
-											class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-
-											<a class="dropdown-item" href="/admin/users/update/8"><i
-												class="dw dw-edit2"></i> Chỉnh sửa</a> <a
-												onclick="return confirm('Bạn muốn xóa người dùng ?');"
-												class="dropdown-item" href="/admin/users/delete/8"><i
-												class="dw dw-delete-3"></i>Xóa</a>
-										</div>
-									</div>
-								</td>
-							</tr>
 
 						</tbody>
 

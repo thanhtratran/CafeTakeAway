@@ -1,7 +1,6 @@
 package CafeTakeAway.Controller.Admin;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,5 +14,12 @@ public class DiscountsController {
 		return mv;
 	}
 	
+	@RequestMapping("/admin/discounts/update/{id}")
+	public ModelAndView Update() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("admin/discount/update");
+		
+		return mv;
+	}
 	
 }

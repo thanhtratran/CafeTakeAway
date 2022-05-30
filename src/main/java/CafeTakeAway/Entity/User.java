@@ -4,18 +4,18 @@ public class User {
 	private String maNV;
 	private String username;
 	private String password;
-	private String maQuyen;
+	private String chucVu;
 	
 	public User() {
 		super();
 	}
 
-	public User(String maNV, String username, String password, String maQuyen) {
+	public User(String maNV, String username, String password, String chucVu) {
 		super();
 		this.maNV = maNV;
 		this.username = username;
 		this.password = password;
-		this.maQuyen = maQuyen;
+		this.chucVu = chucVu;
 	}
 
 	public String getMaNV() {
@@ -42,12 +42,12 @@ public class User {
 		this.password = password;
 	}
 
-	public String getMaQuyen() {
-		return maQuyen;
+	public String getchucVu() {
+		return chucVu;
 	}
 
-	public void setMaQuyen(String maQuyen) {
-		this.maQuyen = maQuyen;
+	public void setchucVu(String chucVu) {
+		this.chucVu = chucVu;
 	}
 	
 }

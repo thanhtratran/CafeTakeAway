@@ -39,7 +39,7 @@
 							class="icon-copy fa fa-minus" aria-hidden="true"></i></span><span
 						class="mtext">Quản lý danh mục</span>
 				</a></li>
-				<li><a href="<c:url value="/users"/>"
+				<li><a href="<c:url value="/admin/users"/>"
 					class="dropdown-toggle  no-arrow"> <span class="micon"><i
 							class="icon-copy fa fa-minus" aria-hidden="true"></i></span><span
 						class="mtext">Quản lý người dùng</span>

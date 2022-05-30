@@ -13,7 +13,7 @@
 						</div>
 						<nav aria-label="breadcrumb" role="navigation">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="/admin/home">Trang
+								<li class="breadcrumb-item"><a href="<c:url value="/admin/home" />">Trang
 										chủ </a></li>
 								<li class="breadcrumb-item active" aria-current="page">Quản
 									lý khuyến mãi</li>
@@ -94,7 +94,7 @@
 							<tr>
 								<td>12</td>
 								<td class="table-plus"><img
-									src="/site/upload/ca-phe-sua-da.jpg" width="70" height="70"
+									src="<c:url value="/assets/user/upload/ca-phe-sua-da.jpg"/>" width="70" height="70"
 									alt=""></td>
 								<td>Cà Phê Sữa Đá</td>
 								<td class="text-center">2021-09-21</td>
@@ -111,7 +111,7 @@
 										<div
 											class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 
-											<a class="dropdown-item" href="/admin/discounts/update/12"><i
+											<a class="dropdown-item" href="<c:url value="/admin/discounts/update/12" />"><i
 												class="dw dw-edit2"></i> Chỉnh sửa</a> <a
 												onclick="return confirm('Bạn muốn xóa khuyến mãi ?');"
 												class="dropdown-item" href="/admin/discounts/delete/12"><i
@@ -123,7 +123,7 @@
 							<tr>
 								<td>7</td>
 								<td class="table-plus"><img
-									src="/site/upload/tra-den-matchiato.jpg" width="70" height="70"
+									src="<c:url value="/assets/user/upload/tra-den-matchiato.jpg"/>" width="70" height="70"
 									alt=""></td>
 								<td>Trà Đen Macchiato</td>
 								<td class="text-center">2021-01-06</td>
