@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:8111
--- Generation Time: Mar 21, 2022 at 05:58 PM
+-- Generation Time: May 30, 2022 at 05:46 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -24,6 +24,137 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `calamviec`
+--
+
+CREATE TABLE `calamviec` (
+  `MaCa` varchar(30) NOT NULL,
+  `GioBatDau` time NOT NULL,
+  `GioKetThuc` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chamluong`
+--
+
+CREATE TABLE `chamluong` (
+  `MaNV` varchar(30) NOT NULL,
+  `LuongCB` float NOT NULL,
+  `TienThuong` float NOT NULL,
+  `HeSoLuong` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ct_calamviec`
+--
+
+CREATE TABLE `ct_calamviec` (
+  `MaNV` varchar(30) NOT NULL,
+  `MaCa` varchar(30) NOT NULL,
+  `Ngay` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ct_dondathang`
+--
+
+CREATE TABLE `ct_dondathang` (
+  `MaDDH` varchar(30) NOT NULL,
+  `MaNguyenLieu` varchar(30) NOT NULL,
+  `SoLuong` int(11) NOT NULL,
+  `DonGia` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ct_hoadon`
+--
+
+CREATE TABLE `ct_hoadon` (
+  `MaHoaDon` varchar(30) NOT NULL,
+  `MaSP` int(30) NOT NULL,
+  `SoLuong` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ct_phieuxuat`
+--
+
+CREATE TABLE `ct_phieuxuat` (
+  `MaPhieuXuat` varchar(30) NOT NULL,
+  `MaNguyenLieu` varchar(30) NOT NULL,
+  `SoLuong` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ct_sanpham`
+--
+
+CREATE TABLE `ct_sanpham` (
+  `MaSanPham` int(30) NOT NULL,
+  `MaNguyenLieu` varchar(30) NOT NULL,
+  `SoLuong` float NOT NULL,
+  `DonVi` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `diadiem`
+--
+
+CREATE TABLE `diadiem` (
+  `MaDiaDiem` varchar(30) NOT NULL,
+  `DiaChi` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `diadiem`
+--
+
+INSERT INTO `diadiem` (`MaDiaDiem`, `DiaChi`) VALUES
+('Q901', '123 Man Thiện, Lê Văn Việt, Quận 9');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dondathang`
+--
+
+CREATE TABLE `dondathang` (
+  `MaDDH` varchar(30) NOT NULL,
+  `MaNCC` varchar(30) NOT NULL,
+  `MaNV` varchar(30) NOT NULL,
+  `NgayLap` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hoadon`
+--
+
+CREATE TABLE `hoadon` (
+  `MaHoaDon` varchar(30) NOT NULL,
+  `MaNV` varchar(30) NOT NULL,
+  `NgayLap` date NOT NULL,
+  `TongTien` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `loaisanpham`
 --
 
@@ -40,6 +171,86 @@ INSERT INTO `loaisanpham` (`MaLoai`, `TenLoai`) VALUES
 ('1', 'Cà Phê'),
 ('2', 'Trà'),
 ('3', 'Trà sữa');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nguyenlieu`
+--
+
+CREATE TABLE `nguyenlieu` (
+  `MaNguyenLieu` varchar(30) NOT NULL,
+  `TenNguyenLieu` varchar(255) NOT NULL,
+  `DonVi` varchar(30) NOT NULL,
+  `SoLuong` int(11) NOT NULL,
+  `GhiChu` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nhacungcap`
+--
+
+CREATE TABLE `nhacungcap` (
+  `MaNCC` varchar(255) NOT NULL,
+  `TenNCC` text NOT NULL,
+  `Email` text NOT NULL,
+  `Sdt` text NOT NULL,
+  `DiaChi` varchar(255) NOT NULL,
+  `GhiChu` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nhanvien`
+--
+
+CREATE TABLE `nhanvien` (
+  `MaNhanVien` varchar(30) NOT NULL,
+  `Ho` varchar(30) NOT NULL,
+  `Ten` varchar(30) NOT NULL,
+  `NgaySinh` date NOT NULL,
+  `DiaChi` varchar(255) NOT NULL,
+  `GioiTinh` varchar(30) NOT NULL,
+  `Email` varchar(30) NOT NULL,
+  `Sdt` varchar(30) NOT NULL,
+  `CMND` varchar(30) NOT NULL,
+  `MaDiaDiem` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `nhanvien`
+--
+
+INSERT INTO `nhanvien` (`MaNhanVien`, `Ho`, `Ten`, `NgaySinh`, `DiaChi`, `GioiTinh`, `Email`, `Sdt`, `CMND`, `MaDiaDiem`) VALUES
+('ADMIN01', 'Trần Văn', 'Hùng', '2000-05-11', '125 Trần Phú , Cần Thơ', 'Nam', 'thach@gmail.com', '0123456789', '987654321', 'Q901');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `phieunhap`
+--
+
+CREATE TABLE `phieunhap` (
+  `MaPhieuNhap` varchar(30) NOT NULL,
+  `MaNV` varchar(30) NOT NULL,
+  `MaDDH` varchar(30) NOT NULL,
+  `NgayNhap` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `phieuxuat`
+--
+
+CREATE TABLE `phieuxuat` (
+  `MaPhieuXuat` varchar(30) NOT NULL,
+  `MaNV` varchar(30) NOT NULL,
+  `NgayXuat` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -77,7 +288,7 @@ INSERT INTO `sanpham` (`MaSP`, `TenSP`, `DonGia`, `DonGiaSauKM`, `TinhTrang`, `M
 (10, 'Trà Sữa Mắc Ca Trân Châu Trắng', 55000, NULL, 'Có sẵn', 'Mỗi ngày với The Coffee House sẽ là điều tươi mới hơn với sữa hạt mắc ca thơm ngon, bổ dưỡng quyện cùng nền trà oolong cho vị cân bằng, ngọt dịu đi kèm cùng Trân châu trắng giòn dai mang lại cảm giác “đã” trong từng ngụm trà sữa.', 'tra-sua-mac-ca.jpg', 0, 1, '3'),
 (11, 'Hồng Trà Sữa Trân Châu', 50000, NULL, 'Có sẵn', 'Thêm chút ngọt ngào cho ngày mới với hồng trà nguyên lá, sữa thơm ngậy được cân chỉnh với tỉ lệ hoàn hảo, cùng trân châu trắng dai giòn có sẵn để bạn tận hưởng từng ngụm trà sữa ngọt ngào thơm ngậy thiệt đã.', 'hong-tra-sua-tran-chau.jpg', 0, 1, '3'),
 (12, 'Trà Sữa Oolong Nướng Nóng', 70000, 59500, 'Có sẵn', 'Đậm đà chuẩn gu và ấm nóng - bởi lớp trà oolong nướng đậm vị hoà cùng lớp sữa thơm béo. Hương vị chân ái đúng gu đậm đà - trà oolong được \"sao\" (nướng) lâu hơn cho vị đậm đà, hoà quyện với sữa thơm ngậy. Cho từng ngụm ấm áp, lưu luyến vị trà sữa đậm đà mã', 'oolong-nuong-nong.jpg', 1, 1, '3'),
-(13, 'Hồng Trà Latte', 52000, NULL, 'Có sẵn', 'Mỗi ngày với The Coffee House sẽ là điều tươi mới hơn với sữa hạt mắc ca thơm ngon, bổ dưỡng quyện cùng nền trà oolong cho vị cân bằng, ngọt dịu đi kèm cùng Trân châu trắng giòn dai mang lại cảm giác “đã” trong từng ngụm trà sữa.\r\n\r\n', 'hong-tra-latte.jpg', 0, 1, '1');
+(13, 'Hồng Trà Latte', 52000, NULL, '', 'Mỗi ngày với The Coffee House sẽ là điều tươi mới hơn với sữa hạt mắc ca thơm ngon, bổ dưỡng quyện cùng nền trà oolong cho vị cân bằng, ngọt dịu đi kèm cùng Trân châu trắng giòn dai mang lại cảm giác “đã” trong từng ngụm trà sữa.', 'hong-tra-latte.jpg', 0, 1, '1');
 
 -- --------------------------------------------------------
 
@@ -86,56 +297,132 @@ INSERT INTO `sanpham` (`MaSP`, `TenSP`, `DonGia`, `DonGiaSauKM`, `TinhTrang`, `M
 --
 
 CREATE TABLE `taikhoan` (
-  `manv` text NOT NULL,
+  `manv` varchar(30) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `maquyen` text NOT NULL
+  `chucvu` varchar(30) NOT NULL,
+  `trangthai` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `taikhoan`
 --
 
-INSERT INTO `taikhoan` (`manv`, `username`, `password`, `maquyen`) VALUES
-('NV001', 'user1', 'user1', 'NV');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `test`
---
-
-CREATE TABLE `test` (
-  `id` int(11) NOT NULL,
-  `1` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `test`
---
-
-INSERT INTO `test` (`id`, `1`) VALUES
-(1, 0),
-(2, 0),
-(3, 0),
-(4, 0),
-(5, 0),
-(6, 0),
-(7, 0),
-(8, 0),
-(9, 0),
-(10, 0),
-(11, 0);
+INSERT INTO `taikhoan` (`manv`, `username`, `password`, `chucvu`, `trangthai`) VALUES
+('ADMIN01', 'admin', 'admin', 'ADMIN', '');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `calamviec`
+--
+ALTER TABLE `calamviec`
+  ADD PRIMARY KEY (`MaCa`);
+
+--
+-- Indexes for table `chamluong`
+--
+ALTER TABLE `chamluong`
+  ADD PRIMARY KEY (`MaNV`);
+
+--
+-- Indexes for table `ct_calamviec`
+--
+ALTER TABLE `ct_calamviec`
+  ADD KEY `MaNV` (`MaNV`,`MaCa`),
+  ADD KEY `MaCa` (`MaCa`);
+
+--
+-- Indexes for table `ct_dondathang`
+--
+ALTER TABLE `ct_dondathang`
+  ADD KEY `MaDDH` (`MaDDH`,`MaNguyenLieu`),
+  ADD KEY `MaNguyenLieu` (`MaNguyenLieu`);
+
+--
+-- Indexes for table `ct_hoadon`
+--
+ALTER TABLE `ct_hoadon`
+  ADD KEY `MaHoaDon` (`MaHoaDon`,`MaSP`),
+  ADD KEY `MaSP` (`MaSP`);
+
+--
+-- Indexes for table `ct_phieuxuat`
+--
+ALTER TABLE `ct_phieuxuat`
+  ADD KEY `MaPhieuXuat` (`MaPhieuXuat`,`MaNguyenLieu`),
+  ADD KEY `MaNguyenLieu` (`MaNguyenLieu`);
+
+--
+-- Indexes for table `ct_sanpham`
+--
+ALTER TABLE `ct_sanpham`
+  ADD KEY `MaSanPham` (`MaSanPham`,`MaNguyenLieu`),
+  ADD KEY `MaNguyenLieu` (`MaNguyenLieu`);
+
+--
+-- Indexes for table `diadiem`
+--
+ALTER TABLE `diadiem`
+  ADD PRIMARY KEY (`MaDiaDiem`);
+
+--
+-- Indexes for table `dondathang`
+--
+ALTER TABLE `dondathang`
+  ADD PRIMARY KEY (`MaDDH`),
+  ADD KEY `MaDDH` (`MaDDH`,`MaNCC`,`MaNV`),
+  ADD KEY `MaNCC` (`MaNCC`),
+  ADD KEY `MaNV` (`MaNV`);
+
+--
+-- Indexes for table `hoadon`
+--
+ALTER TABLE `hoadon`
+  ADD PRIMARY KEY (`MaHoaDon`),
+  ADD KEY `MaNV` (`MaNV`);
+
+--
 -- Indexes for table `loaisanpham`
 --
 ALTER TABLE `loaisanpham`
   ADD PRIMARY KEY (`MaLoai`);
+
+--
+-- Indexes for table `nguyenlieu`
+--
+ALTER TABLE `nguyenlieu`
+  ADD PRIMARY KEY (`MaNguyenLieu`);
+
+--
+-- Indexes for table `nhacungcap`
+--
+ALTER TABLE `nhacungcap`
+  ADD PRIMARY KEY (`MaNCC`);
+
+--
+-- Indexes for table `nhanvien`
+--
+ALTER TABLE `nhanvien`
+  ADD PRIMARY KEY (`MaNhanVien`),
+  ADD KEY `MaDiaDiem` (`MaDiaDiem`);
+
+--
+-- Indexes for table `phieunhap`
+--
+ALTER TABLE `phieunhap`
+  ADD PRIMARY KEY (`MaPhieuNhap`),
+  ADD KEY `MaNV` (`MaNV`,`MaDDH`),
+  ADD KEY `MaDDH` (`MaDDH`);
+
+--
+-- Indexes for table `phieuxuat`
+--
+ALTER TABLE `phieuxuat`
+  ADD PRIMARY KEY (`MaPhieuXuat`),
+  ADD KEY `MaNV` (`MaNV`);
 
 --
 -- Indexes for table `sanpham`
@@ -146,8 +433,82 @@ ALTER TABLE `sanpham`
   ADD KEY `MaLoai` (`MaLoai`);
 
 --
+-- Indexes for table `taikhoan`
+--
+ALTER TABLE `taikhoan`
+  ADD PRIMARY KEY (`manv`),
+  ADD KEY `manv` (`manv`);
+
+--
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `chamluong`
+--
+ALTER TABLE `chamluong`
+  ADD CONSTRAINT `chamluong_ibfk_1` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNhanVien`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `ct_calamviec`
+--
+ALTER TABLE `ct_calamviec`
+  ADD CONSTRAINT `ct_calamviec_ibfk_1` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNhanVien`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ct_calamviec_ibfk_2` FOREIGN KEY (`MaCa`) REFERENCES `calamviec` (`MaCa`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `ct_dondathang`
+--
+ALTER TABLE `ct_dondathang`
+  ADD CONSTRAINT `ct_dondathang_ibfk_1` FOREIGN KEY (`MaDDH`) REFERENCES `dondathang` (`MaDDH`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ct_dondathang_ibfk_2` FOREIGN KEY (`MaNguyenLieu`) REFERENCES `nguyenlieu` (`MaNguyenLieu`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `ct_hoadon`
+--
+ALTER TABLE `ct_hoadon`
+  ADD CONSTRAINT `ct_hoadon_ibfk_1` FOREIGN KEY (`MaHoaDon`) REFERENCES `hoadon` (`MaHoaDon`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ct_hoadon_ibfk_2` FOREIGN KEY (`MaSP`) REFERENCES `sanpham` (`MaSP`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `ct_phieuxuat`
+--
+ALTER TABLE `ct_phieuxuat`
+  ADD CONSTRAINT `ct_phieuxuat_ibfk_1` FOREIGN KEY (`MaPhieuXuat`) REFERENCES `phieuxuat` (`MaPhieuXuat`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ct_phieuxuat_ibfk_2` FOREIGN KEY (`MaNguyenLieu`) REFERENCES `nguyenlieu` (`MaNguyenLieu`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `ct_sanpham`
+--
+ALTER TABLE `ct_sanpham`
+  ADD CONSTRAINT `ct_sanpham_ibfk_1` FOREIGN KEY (`MaSanPham`) REFERENCES `sanpham` (`MaSP`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ct_sanpham_ibfk_2` FOREIGN KEY (`MaNguyenLieu`) REFERENCES `nguyenlieu` (`MaNguyenLieu`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `dondathang`
+--
+ALTER TABLE `dondathang`
+  ADD CONSTRAINT `dondathang_ibfk_1` FOREIGN KEY (`MaNCC`) REFERENCES `nhacungcap` (`MaNCC`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `dondathang_ibfk_2` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNhanVien`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `hoadon`
+--
+ALTER TABLE `hoadon`
+  ADD CONSTRAINT `hoadon_ibfk_1` FOREIGN KEY (`MaNV`) REFERENCES `nhanvien` (`MaNhanVien`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `nhanvien`
+--
+ALTER TABLE `nhanvien`
+  ADD CONSTRAINT `nhanvien_ibfk_1` FOREIGN KEY (`MaNhanVien`) REFERENCES `taikhoan` (`manv`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `nhanvien_ibfk_2` FOREIGN KEY (`MaDiaDiem`) REFERENCES `diadiem` (`MaDiaDiem`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `phieunhap`
+--
+ALTER TABLE `phieunhap`
+  ADD CONSTRAINT `phieunhap_ibfk_1` FOREIGN KEY (`MaDDH`) REFERENCES `dondathang` (`MaDDH`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `sanpham`

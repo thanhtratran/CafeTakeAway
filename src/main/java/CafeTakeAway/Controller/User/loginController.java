@@ -30,8 +30,9 @@ public class loginController {
 	public ModelAndView loginAction(HttpSession session, @ModelAttribute("user") User user) {
 		
 		ModelAndView mv  = new ModelAndView();
-		if (accountservice.checkAccount(user)) {
-			mv.setViewName("redirect:/admin");
+		user = accountservice.checkAccount(user);
+		if (user != null) {
+			mv.setViewName("redirect:/");
 			session.setAttribute("userInfo", user);
 		}
 		else {

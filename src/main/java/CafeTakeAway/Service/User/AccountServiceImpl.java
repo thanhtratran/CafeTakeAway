@@ -11,12 +11,12 @@ public class AccountServiceImpl implements IAccountService {
 	@Autowired
 	UserDao userdao;
 	
-	public boolean checkAccount(User user) {
+	public User checkAccount(User user) {
 		user = userdao.getUserByID(user);
 		if (user != null) {
-			return true;
+			return user;
 		}
-		return false;
+		return null;
 	}
 	
 }

@@ -6,5 +6,5 @@ import CafeTakeAway.Entity.User;
 
 @Service
 public interface IAccountService {
-	public boolean checkAccount(User user);
+	public User checkAccount(User user);
 }

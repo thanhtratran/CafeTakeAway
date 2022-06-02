@@ -58,17 +58,17 @@
 																<div
 																	class="product-miniature item-one first-item d-flex">
 																	<div class="thumbnail-container border">
-																		<a href="/assets/user/products/productDetail/13"> <img
+																		<a href="<c:url value="/assets/user/products/productDetail/13"/>"> <img
 																			class="img-fluid image-cover"
-																			src="/assets/user/upload/hong-tra-latte.jpg" alt="img">
+																			src="<c:url value="/assets/user/upload/hong-tra-latte.jpg"/>" alt="img">
 																			<img class="img-fluid image-secondary"
-																			src="/assets/user/upload/hong-tra-latte.jpg" alt="img">
+																			src="<c:url value="/assets/user/upload/hong-tra-latte.jpg"/>" alt="img">
 																		</a>
 																	</div>
 																	<div class="product-description">
 																		<div class="product-groups">
 																			<div class="product-title ">
-																				<a href="/assets/user/products/productDetail/13"
+																				<a href="<c:url value="/assets/user/products/productDetail/13"/>"
 																					style="color: #625620 !important; font-size: 15px; font-weight: 500;">Hồng
 																					Trà Latte</a>
 																			</div>
@@ -274,7 +274,7 @@
 																			<div class="product-description">
 																			<div class="product-groups">
 																				<div class="product-title">
-																					<a href="/assets/user/products/productDetail/${ item.maSP }"
+																					<a href="<c:url value="/assets/user/products/productDetail/${ item.maSP }"/>"
 																						style="color: black !important; font-size: 15px; font-weight: 500;">${ item.tenSP }</a>
 																				</div>
 																				<div class="rating">&nbsp
@@ -319,7 +319,7 @@
 																						<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 																					</button>
 																				</form>
-																				<a href="/products/productDetail/${ item.maSP }"
+																				<a href="<c:url value="/products/productDetail/${ item.maSP }"/>"
 																					class="quick-view hidden-sm-down"
 																					data-link-action="quickview"> <i
 																					class="fa fa-eye" aria-hidden="true"></i>

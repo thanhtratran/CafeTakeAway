@@ -24,7 +24,7 @@ public class CartController {
 	CartServiceImpl cartservice;
 	
 	@RequestMapping("/addCart/{id}")
-	public String AddCart(HttpServletRequest request, HttpSession session, @PathVariable int id, @RequestParam int quanty) {
+	public String AddCart(HttpServletRequest request, HttpSession session, @PathVariable int id, @RequestParam(required = false, defaultValue = "1") Integer quanty) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("loaisp", homeservice.GetDataLoaiSanPham());
 		@SuppressWarnings("unchecked")

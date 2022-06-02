@@ -49,6 +49,11 @@
 							class="icon-copy fa fa-minus" aria-hidden="true"></i></span><span
 						class="mtext">Quản lý khuyến mãi</span>
 				</a></li>
+				<li><a href="<c:url value="/admin/statistic"/>"
+					class="dropdown-toggle  no-arrow"> <span class="micon"><i
+							class="icon-copy fa fa-minus" aria-hidden="true"></i></span><span
+						class="mtext">Thống kê doanh thu</span>
+				</a></li>
 				<li><a href="" class="dropdown-toggle logoutLink no-arrow">
 						<span class="micon"><i class="dw dw-logout"
 							aria-hidden="true"></i></span><span class="mtext">Đăng xuất</span>

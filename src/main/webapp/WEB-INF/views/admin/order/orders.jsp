@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <div>
 	<div class="main-container">
 		<div class="pd-ltr-20 xs-pd-20-10">
@@ -62,6 +64,7 @@
 					<table class=" table stripe hover nowrap">
 						<thead>
 							<tr>
+								<th>Mã Hoá Đơn</th>
 								<th style="color: blue;"><a
 									href="<c:url value="/admin/order/page/1?sortField=orderDate&amp;sortDir=asc" />">
 										Ngày <span> <i class="icon-copy fa fa-arrow-up"
@@ -71,38 +74,48 @@
 								<th>Tổng tiền</th>
 								<th style="color: blue;"><a
 									href="<c:url value="/admin/order/page/1?sortField=orderStatus&amp;sortDir=asc" />">
-										Tình trạng <!-- <i class="icon-copy fa" th:classappend = "${sortField} == 'productId' && ${sortField} == 'asc'? fa-arrow-down : fa-arrow-up" aria-hidden="true"></i> -->
+										Nhân Viên Lập <!-- <i class="icon-copy fa" th:classappend = "${sortField} == 'productId' && ${sortField} == 'asc'? fa-arrow-down : fa-arrow-up" aria-hidden="true"></i> -->
 								</a></th>
-
+								
+								
 								<th class="datatable-nosort">Hành động</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td class="table-plus">2021-12-10</td>
-								<td><span>52.000,00</span> đ</td>
-								<td>Đặt hàng</td>
-								<td>
-									<div class="dropdown">
-										<a
-											class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-											href="#" role="button" data-toggle="dropdown"> <i
-											class="dw dw-more"></i>
-										</a>
-										<div
-											class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-											<a class="dropdown-item" href="<c:url value="/admin/order/orderDetail/9" />"><i
-												class="dw dw-eye"></i> Xem</a> <a class="dropdown-item"
-												href="<c:url value="/admin/order/orderDetail/update/9?status=Đã duyệt" />"><i
-												class="dw dw-edit2"></i> Đã Giao</a> <a class="dropdown-item"
-												href="<c:url value="/admin/order/orderDetail/update/9?status=Không duyệt" />"><i
-												class="dw dw-delete-3"></i> Huỷ Đơn</a>
-										</div>
-									</div>
-								</td>
-							</tr>
 
-						</tbody>
+						<c:forEach var="item" items="${ hoadon }">
+							<tbody>
+								<tr>
+									<td>${ item.maHoaDon }</td>
+									<td class="table-plus">${ item.ngayLap }</td>
+									<td><span><fmt:formatNumber type="number"
+												maxFractionDigits="3"
+												value="${ item.tongTien }" /></span>
+										đ</td>
+									<td>${ item.maNV }</td>
+									<td>
+										<div class="dropdown">
+											<a
+												class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+												href="#" role="button" data-toggle="dropdown"> <i
+												class="dw dw-more"></i>
+											</a>
+											<div
+												class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+												<a class="dropdown-item"
+													href="<c:url value="/admin/order/orderDetail/${ item.maHoaDon }" />"><i
+													class="dw dw-eye"></i> Xem</a> <a class="dropdown-item"
+													href="<c:url value="/admin/order/orderDetail/update/9?status=Đã duyệt" />"><i
+													class="dw dw-edit2"></i> Đã Giao</a> <a class="dropdown-item"
+													href="<c:url value="/admin/order/orderDetail/update/9?status=Không duyệt" />"><i
+													class="dw dw-delete-3"></i> Huỷ Đơn</a>
+											</div>
+										</div>
+									</td>
+								</tr>
+
+							</tbody>
+						</c:forEach>
+
 
 					</table>
 					<!-- <div class="ml-2">
