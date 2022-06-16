@@ -104,4 +104,16 @@ public class SanPhamDao {
 		_jdbcTemplate.update(sql);
 		return;
 	}
+	
+	public void ChinhSuaKhuyenMai(int maSP, String option, int giaSauKM) {
+		String sql = "update sanpham set dongiasaukm = ?, khuyenmai = 1 where maSP = ?";
+		if (option.equals("0")) {
+			sql = "update sanpham set dongiasaukm = null, khuyenmai = 0 where maSP = ?";
+			_jdbcTemplate.update(sql, maSP);
+			return;
+		}
+		
+		_jdbcTemplate.update(sql, giaSauKM, maSP);
+		return;
+	}
 }

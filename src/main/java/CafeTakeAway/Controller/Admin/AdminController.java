@@ -9,19 +9,23 @@ import org.springframework.web.servlet.ModelAndView;
 import CafeTakeAway.Entity.User;
 
 @Controller
-public class AdminController {
+public class AdminController extends BaseClass {
+	
 	
 	@RequestMapping(value = {"/admin", "/admin/", "/admin/home", "/admin/home/"})
 	public ModelAndView AdminHome(HttpSession session) {
+		User u = (User) session.getAttribute("userInfo");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/admin/index");
-		User u = (User) session.getAttribute("userInfo");
-		/*
-		 * if (u == null) { mv.setViewName("redirect:login"); }
-		 */
-		
+		if (!Init()) {
+			mv.setViewName("redirect: /CafeTakeAway/login");
+		}
+		if (u != null) {
+			mv.addObject("maNV", u.getMaNV());
+		}
 		
 		return mv;
 	}
 	
+
 }

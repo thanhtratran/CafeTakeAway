@@ -23,7 +23,7 @@ import CafeTakeAway.Service.User.PageServiceImpl;
 import static java.nio.charset.StandardCharsets.*;
 
 @Controller
-public class ProductsController {
+public class ProductsController extends BaseClass {
 	@Autowired
 	LoaiSanPhamServiceImpl loaiSPService;
 	@Autowired
@@ -37,6 +37,9 @@ public class ProductsController {
 	public ModelAndView Products(@RequestParam(defaultValue = "1") String page) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("admin/product/products");
+		if (!Init()) {
+			mv.setViewName("redirect: /CafeTakeAway/login");
+		}
 
 		int totalData = loaiSPService.GetAllDataSanPham().size();
 		PageDto pageDto = pageService.GetAllPages(totalData, 20, Integer.parseInt(page));
@@ -52,6 +55,9 @@ public class ProductsController {
 	public ModelAndView AddProduct() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("admin/product/add");
+		if (!Init()) {
+			mv.setViewName("redirect: /CafeTakeAway/login");
+		}
 		
 		mv.addObject("loaisp", homeservice.GetDataLoaiSanPham());
 		mv.addObject("sp", new SanPhamDto());
@@ -60,6 +66,9 @@ public class ProductsController {
 	
 	@RequestMapping(value = "/admin/products/add", method=RequestMethod.POST)
 	public String AddProductAction(@ModelAttribute("sanPham") SanPhamDto spDto, @RequestParam(value="file", required = true) MultipartFile file) {
+		if (!Init()) {
+			return "redirect: /CafeTakeAway/login";
+		}
 		saveFile(file);
 		
 		SanPham sp = new SanPham();
@@ -88,30 +97,26 @@ public class ProductsController {
 		return "redirect:/admin/products/";
 	}
 
-	@RequestMapping("/admin/discounts/add/{id}")
-	public ModelAndView AddDiscount(@PathVariable int id) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("admin/product/addDiscount");
-
-		return mv;
-	}
-
 	@RequestMapping(value = "/admin/products/update/{id}", method = RequestMethod.GET)
 	public ModelAndView EditProduct(@PathVariable int id) {
-		ModelAndView mv = new ModelAndView();
-
+		ModelAndView mv = new ModelAndView("admin/product/update");
+		if (!Init()) {
+			mv.setViewName("redirect: /CafeTakeAway/login");
+		}
 		mv.addObject("loaisp", homeservice.GetDataLoaiSanPham());
 
 		SanPham sp = spDao.FindSanPhamById(id);
 		mv.addObject("sp", sp);
 
-		mv.setViewName("admin/product/update");
 		return mv;
 	}
 
 	@RequestMapping(value = "/admin/products/update/{id}", method=RequestMethod.POST)
 	public String EditProductAction(@ModelAttribute("sanPham") SanPhamDto sp, @PathVariable int id, @RequestParam(value="file", required = false) MultipartFile file) {
-//		saveFile(file);
+		saveFile(file);
+		if (!Init()) {
+			return "redirect: /CafeTakeAway/login";
+		}
 		String fileName = file.getOriginalFilename();
 		byte[] bytes = sp.getTenSP().getBytes(ISO_8859_1);
 		String tenSP = new String(bytes, UTF_8);
@@ -147,6 +152,9 @@ public class ProductsController {
 	
 	@RequestMapping(value = "/admin/products/delete/{id}", method = RequestMethod.GET)
 	public String DeleteProduct(@PathVariable int id) {
+		if (!Init()) {
+			return "redirect: /CafeTakeAway/login";
+		}
 		int maxId = spDao.GetMaxMaSP();
 		if (id > 0 && id <= maxId) {
 			spDao.XoaSanPham(id);

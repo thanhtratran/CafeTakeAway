@@ -1,5 +1,6 @@
 package CafeTakeAway.Dao;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,12 +13,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import CafeTakeAway.Dto.CartDto;
+import CafeTakeAway.Dto.HoaDonDto;
+import CafeTakeAway.Dto.MapperHoaDonDto;
 import CafeTakeAway.Dto.MapperSanPham_HoaDon;
 import CafeTakeAway.Dto.SanPham_HoaDon;
 import CafeTakeAway.Entity.HoaDon;
 import CafeTakeAway.Entity.MapperHoaDon;
-import CafeTakeAway.Entity.MapperSanPham;
-import CafeTakeAway.Entity.SanPham;
 import CafeTakeAway.Entity.User;
 import CafeTakeAway.Service.User.CartServiceImpl;
 
@@ -67,6 +68,28 @@ public class HoaDonDao {
 		String sql = "select anh, tensp, soluong, dongia, dongiasaukm from ct_hoadon join sanpham on sanpham.masp = ct_hoadon.masp where mahoadon =" + id;
 		list = _jdbcTemplate.query(sql, new MapperSanPham_HoaDon());
 		return list;
+	}
+	
+	public List<HoaDonDto> getHoaDonfromDate( String maDiaDiem, Date sqlDate, Date sqlDate2) {
+		List<HoaDonDto> list = new ArrayList<HoaDonDto>();
+		String sql = "SELECT maDiaDiem, diachi, `MaHoaDon`, hoadon.manv, `NgayLap`, `TongTien`  FROM `hoadon` join diadiem on "
+				+ "hoadon.MaNV = diadiem.manv WHERE ngaylap BETWEEN ? and ? and madiadiem like ?";
+		list = _jdbcTemplate.query(sql, new MapperHoaDonDto(), sqlDate, sqlDate2, maDiaDiem);
+		return list;
+	}
+	
+	public List<HoaDonDto> getTongHoaDonfromDate( String maDiaDiem, Date sqlDate, Date sqlDate2) {
+		List<HoaDonDto> list = new ArrayList<HoaDonDto>();
+		String sql = "SELECT maDiaDiem, diachi, `MaHoaDon`, hoadon.manv, ngaythanhtoan as ngaylap, sum(TongTien) as tongTien FROM `hoadon` join diadiem on "
+				+ "hoadon.MaNV = diadiem.manv WHERE ngaylap BETWEEN ? and ? and madiadiem like ? group by maDiaDiem";
+		list = _jdbcTemplate.query(sql, new MapperHoaDonDto(), sqlDate, sqlDate2, maDiaDiem);
+		return list;
+	}
+	
+	public void UpdateNgayThanhToan(String id, Date date) {
+		String sql = "update diadiem set NgayThanhToan = ? where maDiaDiem = ?";
+		_jdbcTemplate.update(sql, date, id);
+		return;
 	}
 	
 	

@@ -32,7 +32,7 @@ public class loginController {
 		ModelAndView mv  = new ModelAndView();
 		user = accountservice.checkAccount(user);
 		if (user != null) {
-			mv.setViewName("redirect:/");
+			mv.setViewName("redirect:/admin");
 			session.setAttribute("userInfo", user);
 		}
 		else {
@@ -41,4 +41,12 @@ public class loginController {
 
 		return mv;
 	}
+	
+	@RequestMapping(value = "/logout") 
+	public String logut(HttpSession session) {
+		session.removeAttribute("userInfo");
+		return "redirect: /CafeTakeAway";
+	}
+	
+	
 }

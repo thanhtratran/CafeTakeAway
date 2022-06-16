@@ -17,24 +17,20 @@
 					data-toggle="dropdown"> <span class="user-icon"> <img
 						src="<c:url value="/assets/admin/vendors/images/admin-img.png" />"
 						alt="">
-				</span> <span class="user-name">Phạm Quyền</span> <span class="user-name">[ADMIN]</span>
+				</span> <span class="user-name">ADMIN</span> <span class="user-name"></span>
 				</a>
 				<div
 					class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 					<a class="dropdown-item " href="<c:url value="/admin/profiles"/>"><i
-						class="dw dw-user1"></i>Thông tin cá nhân</a> <a
-						class="dropdown-item "
+						class="dw dw-user1"></i>Thông tin cá nhân</a> 
+					<a class="dropdown-item "
 						href="<c:url value="/admin/profiles/updatePassword"/>"><i
-						class="icon-copy fi-key"></i>Thay đổi mật khẩu</a> <a
-						class="dropdown-item logoutLink" href=""><i
-						class="dw dw-logout" />"></i> Đăng xuất</a>
+						class="icon-copy fi-key"></i>Thay đổi mật khẩu</a> 
+					<a class="dropdown-item" href="<c:url value="/logout"/>"><i
+						class="dw dw-logout"></i> Đăng xuất</a>
 					<!-- <a href="" class="dropdown-toggle  no-arrow">
 							<span class="micon"><i class="dw dw-logout" aria-hidden="true"></i></span><span class="mtext">Đăng xuất</span>
 						</a> -->
-					<form action="/logout" method="post" name="logoutForm"
-						hidden="hidden">
-						<input class="micon mtext" type="submit" value="Đăng xuất">
-					</form>
 				</div>
 			</div>
 		</div>

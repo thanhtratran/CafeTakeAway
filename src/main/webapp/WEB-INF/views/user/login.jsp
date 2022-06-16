@@ -35,10 +35,7 @@
                     <div id="content-wrapper" class="full-width">
                         <div id="main">
                             <div class="container">
-                                <div class="login-form">
-                                    <div>Tài khoản user: tai@gmail.com, mật khẩu: 123456</div>
-                                    <div>Tài khoản quản trị: admin@gmail.com, mật khẩu: 123456</div>
-                                </div>
+                                
                                 <h1 class="text-center title-page">Đăng nhập</h1>
                                 <div class="login-form">
                                     

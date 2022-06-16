@@ -71,21 +71,16 @@
 								<th style="color: blue;"><a
 									href="/admin/products/page/1?sortField=productName&amp;sortDir=desc">
 										Tên sản phẩm </a></th>
-
-								<th style="color: blue;"><a
-									href="/admin/products/page/1?sortField=enteredDate&amp;sortDir=desc">
-										Ngày nhập </a></th>
-								<th style="color: blue;"><a
-									href="/admin/products/page/1?sortField=quantity&amp;sortDir=desc">
-										Tồn kho </a></th>
 								<th style="color: blue;"><a
 									href="/admin/products/page/1?sortField=unitPrice&amp;sortDir=desc">
 										Giá bán </a></th>
+								<th style="color: blue;"><a
+									href="/admin/products/page/1?sortField=unitPrice&amp;sortDir=desc">
+										Giá khuyến mãi </a></th>
 								<th class="datatable-nosort">Hành động</th>
 							</tr>
 						</thead>
 						<tbody>
-
 							<c:if test="${ SanPhamByPage.size() > 0 }">
 								<c:forEach var="item" items="${ SanPhamByPage }">
 									<tr>
@@ -94,11 +89,14 @@
 											src="<c:url value="/assets/user/upload/${ item.anh}" />"
 											width="70" height="70" alt=""></td>
 										<td>${ item.tenSP }</td>
-
-										<!-- <td th:text="${product.enteredDate}">29-03-2018</td> -->
-										<td>2021-06-14</td>
-										<td>50</td>
 										<td><span>${ item.donGia }</span> đ</td>
+										<c:if test="${ item.donGia  != item.donGiaSauKM }">
+											<td><span>${ item.donGiaSauKM }</span> đ</td>
+										</c:if>
+										<c:if test="${ item.donGia == item.donGiaSauKM }">
+											<td><span></span></td>
+										</c:if>
+										
 										<td>
 											<div class="dropdown">
 												<a

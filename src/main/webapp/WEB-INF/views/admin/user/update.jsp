@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
 <div>
@@ -29,79 +30,46 @@
 				<div class="container mt-5 d-flex justify-content-center">
 					<div class="row">
 						<div class="col">
-							<form action="/admin/users/saveOrUpdate" method="post"
-								class="shadow-lg rounded bg-light p-2" style="width: 700px;">
+							<form:form action="/CafeTakeAway/admin/user/update/${ user.maNhanVien }" method="post"
+								class="shadow-lg rounded bg-light p-2" style="width: 700px;"
+								modelAttribute="user">
 								<h4 class="text-center text-primary">Thông tin người dùng</h4>
 
 								<div class="form-group">
 									<label for="name">Họ tên:</label> <input type="text"
 										readonly="" class="form-control" id="name" name="fullname"
-										value="${ user.ho } ${ user.ten }"> <input type="hidden"
-										class="form-control" required="" id="userId" name="userId"
-										value="11">
+										value="${ user.ho } ${ user.ten }"> 
+									<input type="hidden" class="form-control" required="" id="userId"
+										name="userId" value="">
 								</div>
 
 								<div class="form-row">
 									<div class="form-group col">
-										<label for="email">Email</label> <input type="text"
-											class="form-control" id="mail" required=""
-											name="email" value="${ user.email }">
+										<label for="email">Email</label> 
+										<form:input type="text"
+											class="form-control" id="mail" required="" path="email"
+											value="${ user.email }"/>
 									</div>
 									<div class="form-group col">
-										<label for="phone">Số điện thoại:</label> <input type="text"
-											class="form-control" id="phone" required=""
-											name="phone" value="${ user.sdt }">
+										<label for="phone">Số điện thoại:</label> 
+										<form:input type="text"
+											class="form-control" id="phone" required="" path="sdt"
+											value="${ user.sdt }"/>
 									</div>
-								</div>
-								<div class="form-row">
-									<div class="form-group col">
-
-										<div class="form-group row">
-											<label class="col-sm-12 col-md-2 col-form-label">Vai
-												trò</label>
-											<div class="col-sm-12 col-md-10">
-												
-											
-												<select class="custom-select col-12" id="roleName"
-													name="roleName">
-													<c:forEach var="item" items="${ quyen }">
-														<option value="${ item }" ${ user.chucVu == item ? 'selected="selected"' : '' }>${ item }</option>
-													</c:forEach>
-												</select>
-											</div>
-										</div>
-									</div>
-
-								</div>
-								<div class="form-row">
-									<div class="form-group col">
-
-										<div class="form-group row">
-											<label class="col-sm-12 col-md-2 col-form-label">Tình
-												trạng</label>
-											<div class="col-sm-12 col-md-10">
-												<select class="custom-select col-12" id="status"
-													name="status">
-													<option value="1" selected="selected">Hoạt động</option>
-													<option value="0">Khóa</option>
-												</select>
-											</div>
-										</div>
-									</div>
-
 								</div>
 
 								<div class="form-group">
-									<label for="inputAddress">Địa chỉ:</label> <input type="text"
-										readonly="" class="form-control" id="inputAddress" required=""
-										name="address" value="${ user.diaChi }">
+									<label for="inputAddress">Địa chỉ:</label> 
+									<form:input type="text"
+										class="form-control" id="inputAddress" required=""
+										path="diaChi" value="${ user.diaChi }"/>
 								</div>
 								<div class="text-center">
 									<button type="submit" class="btn btn-primary">
 										<h4 class="text-light">Đồng ý</h4>
 									</button>
 								</div>
-							</form>
+							</form:form>
 						</div>
 					</div>
 

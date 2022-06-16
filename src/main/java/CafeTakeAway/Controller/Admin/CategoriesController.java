@@ -16,7 +16,7 @@ import CafeTakeAway.Service.User.HomeServiceImpl;
 import CafeTakeAway.Service.User.LoaiSanPhamServiceImpl;
 
 @Controller
-public class CategoriesController {
+public class CategoriesController extends BaseClass {
 	@Autowired
 	HomeServiceImpl homeservice;
 	@Autowired
@@ -24,8 +24,10 @@ public class CategoriesController {
 	
 	@RequestMapping("/admin/categories")
 	public ModelAndView Categories() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("admin/category/categories");
+		ModelAndView mv = new ModelAndView("admin/category/categories");
+		if (!Init()) {
+			mv.setViewName("redirect: /CafeTakeAway/login");
+		}
 		
 		mv.addObject("loaisp", homeservice.GetDataLoaiSanPham());
 		return mv;
@@ -33,8 +35,10 @@ public class CategoriesController {
 	
 	@RequestMapping("/admin/categories/add")
 	public ModelAndView Add() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("admin/category/add");
+		ModelAndView mv = new ModelAndView("admin/category/add");
+		if (!Init()) {
+			mv.setViewName("redirect: /CafeTakeAway/login");
+		}
 		int maxId = loaiSPService.GetMaxMaLoai();
 		maxId++;
 		mv.addObject("maloai", maxId);
@@ -45,6 +49,9 @@ public class CategoriesController {
 	
 	@RequestMapping(value = "/admin/categories/add", method = RequestMethod.POST)
 	public String AddAction(@ModelAttribute("loaisp") LoaiSanPham loaisp) {
+		if (!Init()) {
+			return "redirect: /CafeTakeAway/login";
+		}
 		int maxId = loaiSPService.GetMaxMaLoai();
 		maxId++;
 		loaisp.setMaLoai(maxId);
@@ -60,6 +67,9 @@ public class CategoriesController {
 	@RequestMapping("/admin/categories/update/{id}")
 	public ModelAndView Update(@PathVariable int id) {
 		ModelAndView mv = new ModelAndView();
+		if (!Init()) {
+			mv.setViewName("redirect: /CafeTakeAway/login");
+		}
 		mv.setViewName("admin/category/update");
 		mv.addObject("loaispById", loaiSPService.GetLoaiSanPhamByID(id));
 		return mv;
@@ -67,6 +77,9 @@ public class CategoriesController {
 	
 	@RequestMapping(value = "/admin/categories/update", method = RequestMethod.POST)
 	public String UpdateAction(@ModelAttribute("loaispById") LoaiSanPham loaisp) {
+		if (!Init()) {
+			return "redirect: /CafeTakeAway/login";
+		}
 		int maxId = loaiSPService.GetMaxMaLoai();
 		if(loaisp.getMaLoai() < 0 || loaisp.getMaLoai() > maxId) {
 			return "redirect:/admin/categories";
@@ -84,6 +97,9 @@ public class CategoriesController {
 	
 	@RequestMapping(value = "/admin/categories/delete/{id}", method = RequestMethod.GET)
 	public String Delete(@PathVariable int id, @ModelAttribute("loaispById") LoaiSanPham loaisp) {
+		if (!Init()) {
+			return "redirect: /CafeTakeAway/login";
+		}
 		int maxId = loaiSPService.GetMaxMaLoai();
 		if(id < 0 || id > maxId) {
 			return "redirect:/admin/categories";

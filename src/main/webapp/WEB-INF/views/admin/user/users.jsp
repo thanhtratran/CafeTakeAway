@@ -23,9 +23,20 @@
 
 				</div>
 			</div>
+
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-6 col-md-8"></div>
+					<div class="col-sm-6 col-md-8">
+
+						<div class="row">
+							<div class="col-sm-6 col-md-8">
+								<a href="/CafeTakeAway/admin/user/addUser" type="button"
+									class="btn btn-outline-primary btn-lg m-2 mb-4">Thêm Quản Lý</a>
+							</div>
+
+						</div>
+
+					</div>
 					<div class="col-sm-6 col-md-4">
 						<div class="form-group row">
 							<div class="col-sm-12 col-md-10">
@@ -101,14 +112,17 @@
 									<td><span>${ item.maNhanVien}</span></td>
 									<td>
 										<div class="dropdown">
-											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+											<a
+												class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
 												href="#" role="button" data-toggle="dropdown"> <i
 												class="dw dw-more"></i>
 											</a>
-											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="<c:url value="/admin/user/update/${ item.maNhanVien}"/>"><i
-													class="dw dw-edit2"></i> Chỉnh sửa</a> 
-													<a class="dropdown-item" href="<c:url value="/admin/user/delete/${ item.maNhanVien}"/>"><i
+											<div
+												class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+												<a class="dropdown-item"
+													href="<c:url value="/admin/user/update/${ item.maNhanVien}"/>"><i
+													class="dw dw-edit2"></i> Chỉnh sửa</a> <a class="dropdown-item"
+													href="<c:url value="/admin/user/delete/${ item.maNhanVien}"/>"><i
 													class="dw dw-delete-3"></i>Xóa</a>
 											</div>
 										</div>
